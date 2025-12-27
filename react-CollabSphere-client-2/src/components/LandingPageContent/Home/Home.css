@@ -1,0 +1,54 @@
+/* Define styles for the button class */
+.DialogButtonCancel {
+    color: black !important;
+    /* Set the default text color */
+    transition: background-color 0.3s ease;
+    /* Add a transition for hover effect */
+}
+
+
+
+/* Define styles for the button class */
+.DialogButtonJoin {
+    color: #ff7f7f !important;
+    /* Set the default text color */
+    transition: background-color 0.3s ease;
+    /* Add a transition for hover effect */
+}
+
+/* Define styles for the button on hover */
+.DialogButtonJoin:hover {
+    color: white !important;
+    background-color: #ff7f7f !important;
+    /* Set the hover background color */
+}
+
+.DialogButtonCreate {
+    color: #ff7f7f !important;
+    /* Set the default text color */
+    transition: background-color 0.3s ease;
+    /* Add a transition for hover effect */
+}
+
+/* Define styles for the button on hover */
+.DialogButtonJoin:hover {
+    color: white !important;
+    background-color: #ff7f7f !important;
+    /* Set the hover background color */
+}
+
+.MuiOutlinedInput-notchedOutline{
+    border-color: black !important;
+ }
+
+ .MuiFilledInput-root {
+    border-bottom: 1px solid black !important;
+  }
+
+  .MuiInput-root {
+    border-bottom: 1px solid black !important;
+  }
+
+  .MuiInputLabel-root {
+    color: black !important;
+  }

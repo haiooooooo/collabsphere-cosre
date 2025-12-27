@@ -1,0 +1,342 @@
+.cosre-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(22, 163, 74, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 80% 30%, rgba(22, 163, 74, 0.12), transparent 65%),
+    linear-gradient(135deg, #f6fff8, #ffffff);
+}
+
+/* A subtle pattern layer (roughly inspired by the provided screenshot) */
+.cosre-login-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle at 18% 24%, rgba(22, 163, 74, 0.75) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 18%, rgba(22, 163, 74, 0.75) 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 72%, rgba(22, 163, 74, 0.75) 0 2px, transparent 3px);
+  background-size: 260px 260px;
+  background-repeat: repeat;
+}
+
+.cosre-login-shell {
+  width: min(1200px, 100%);
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 980px) {
+  .cosre-login-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Announcements */
+.cosre-ann {
+  display: flex;
+}
+
+.cosre-ann-card {
+  background: white;
+  border: 1px solid var(--cosre-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cosre-ann-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid var(--cosre-border);
+  background: #fff;
+  overflow: auto;
+}
+
+.cosre-tab {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cosre-muted);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.cosre-tab:hover {
+  background: var(--cosre-primary-soft);
+  color: var(--cosre-primary);
+}
+
+.cosre-tab.active {
+  background: var(--cosre-primary);
+  color: white;
+}
+
+.cosre-ann-list {
+  padding: 8px;
+  overflow: auto;
+}
+
+.cosre-ann-item {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+}
+
+.cosre-ann-item:hover {
+  background: var(--cosre-bg-soft);
+  border-color: var(--cosre-border);
+}
+
+.cosre-ann-title {
+  font-weight: 700;
+  color: var(--cosre-text);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.cosre-ann-meta {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cosre-muted);
+  font-size: 12px;
+}
+
+.cosre-ann-link {
+  color: var(--cosre-primary);
+  font-weight: 700;
+}
+
+/* Login */
+.cosre-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cosre-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border: 1px solid var(--cosre-border);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+.cosre-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cosre-brand-logo {
+  height: 44px;
+  width: auto;
+}
+
+.cosre-brand-sub {
+  font-size: 12px;
+  color: var(--cosre-muted);
+  text-align: center;
+}
+
+.cosre-login-title {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 900;
+  color: var(--cosre-primary);
+  letter-spacing: 0.6px;
+}
+
+.cosre-error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.cosre-demo-hint {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(22, 163, 74, 0.10);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  border-radius: 12px;
+  color: var(--cosre-text);
+  font-size: 13px;
+}
+
+.cosre-form {
+  margin-top: 14px;
+}
+
+.cosre-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cosre-muted);
+  margin: 10px 0 6px;
+}
+
+.cosre-input {
+  width: 100%;
+  border: 1px solid var(--cosre-border);
+  border-radius: 12px;
+  padding: 12px 12px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.cosre-input:focus {
+  border-color: rgba(22, 163, 74, 0.55);
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+}
+
+.cosre-pass {
+  position: relative;
+}
+
+.cosre-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--cosre-muted);
+  padding: 6px;
+}
+
+.cosre-eye:hover {
+  color: var(--cosre-primary);
+}
+
+.cosre-submit {
+  margin-top: 14px;
+  width: 100%;
+  background: var(--cosre-primary);
+  border: 1px solid var(--cosre-primary);
+  color: white;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.cosre-submit:hover {
+  background: var(--cosre-primary-dark);
+}
+
+.cosre-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.cosre-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cosre-demo-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.cosre-select {
+  flex: 1;
+  border: 1px solid var(--cosre-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fff;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.cosre-select:focus {
+  outline: none;
+  border-color: rgba(22, 163, 74, 0.55);
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+}
+
+.cosre-demo-login {
+  border: 1px solid var(--cosre-primary);
+  background: #fff;
+  color: var(--cosre-primary);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 900;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.cosre-demo-login:hover {
+  background: var(--cosre-primary-soft);
+}
+
+.cosre-link {
+  border: none;
+  background: transparent;
+  padding: 6px 0;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--cosre-primary);
+}
+
+.cosre-link:hover {
+  text-decoration: underline;
+}
+
+.cosre-demo {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.cosre-demo-btn {
+  border: 1px solid var(--cosre-border);
+  border-radius: 999px;
+  padding: 8px 10px;
+  background: #fff;
+  color: var(--cosre-text);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.cosre-demo-btn:hover {
+  border-color: rgba(22, 163, 74, 0.45);
+  background: var(--cosre-primary-soft);
+}
+
+.cosre-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--cosre-muted);
+  text-align: center;
+}

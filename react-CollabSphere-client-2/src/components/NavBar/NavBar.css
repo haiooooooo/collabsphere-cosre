@@ -1,0 +1,16 @@
+.nav-link{
+  
+ 
+   min-width: 150px;
+   text-align: center;
+}
+
+.nav-link.active{
+  background: var(--cosre-primary) !important;
+  color: white !important;
+ }
+
+ .nav-link:hover{
+   color: var(--cosre-primary) ;
+   background: var(--cosre-primary-soft);
+ }

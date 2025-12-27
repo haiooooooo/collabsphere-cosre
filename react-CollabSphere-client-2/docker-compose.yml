@@ -1,0 +1,27 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  # Map host port 80 to container port 80
+    volumes:
+      - .:/usr/app  # Mount the current directory to the container
+    environment:
+      - NODE_ENV=production  # Set the environment variable
+
+  nginx:
+    image: nginx:1.23.1-alpine
+    ports:
+      - "8080:80"  # You can change this if you want to access it through a different port
+    volumes:
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf  # Mount the Nginx configuration
+      - ./build:/usr/share/nginx/html  # Mount the build directory
+    depends_on:
+      - frontend  # Ensure frontend builds before Nginx starts
+
+networks:
+  default:
+    driver: bridge  # Use the default bridge network

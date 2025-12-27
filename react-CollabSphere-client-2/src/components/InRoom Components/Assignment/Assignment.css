@@ -1,0 +1,65 @@
+.DialogButtonAnnouncement {
+  color: #ff7f7f !important;
+  /* Set the default text color */
+  transition: background-color 0.3s ease;
+  /* Add a transition for hover effect */
+}
+
+/* Define styles for the button on hover */
+.DialogButtonAnnouncement:hover {
+  color: white !important;
+  background-color: #ff7f7f !important;
+  /* Set the hover background color */
+}
+
+
+
+.MuiInput-root {
+  border-bottom: 0px solid black !important;
+}
+
+
+.css-y0fr9s-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #ff7f7f !important;
+}
+
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  background-color: #ff7f7f !important;
+}
+
+.css-1aquho2-MuiTabs-indicator {
+  background-color: #ff7f7f !important;
+}
+
+.MuiClock-pin.css-umzx0k-MuiClock-pin {
+  background-color: #ff7f7f !important;
+}
+
+.MuiClockPointer-root.css-d0vs79-MuiClockPointer-root {
+  background-color: #ff7f7f !important;
+}
+
+.MuiClockPointer-thumb.css-eg3pzz-MuiClockPointer-thumb {
+  background-color: #ff7f7f !important;
+  border: 16px solid #ff7f7f;
+}
+
+.css-rdq5h4-MuiClockPointer-root{
+  background-color: #ff7f7f !important;
+}
+
+div.MuiClockPointer-thumb.css-12t0dn4-MuiClockPointer-thumb{
+  background-color: #ff7f7f !important;
+  border: 16px solid #ff7f7f;
+
+}
+.MuiDialog-root.MuiModal-root.css-3dah0e-MuiModal-root-MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container > div > div > div > div.MuiDialogActions-root.MuiDialogActions-spacing.MuiPickersLayout-actionBar.css-hlj6pa-MuiDialogActions-root > button:nth-child(1)
+{
+  color:black
+}
+body > div.MuiDialog-root.MuiModal-root.css-3dah0e-MuiModal-root-MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container > div > div > div > div.MuiDialogActions-root.MuiDialogActions-spacing.MuiPickersLayout-actionBar.css-hlj6pa-MuiDialogActions-root > button:nth-child(2){
+  color:#ff7f7f
+}
+.MuiDialog-root.MuiModal-root.css-3dah0e-MuiModal-root-MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container > div > div > div > div.MuiPickersLayout-contentWrapper.css-16b5y55-MuiPickersLayout-contentWrapper > div.MuiDateCalendar-root.css-cwhad8-MuiDateCalendar-root > div.MuiPickersFadeTransitionGroup-root.MuiDateCalendar-viewTransitionContainer.css-15v8kdh-MuiPickersFadeTransitionGroup-root-MuiDateCalendar-viewTransitionContainer > div > div > div.MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition > div > div:nth-child(1) > button.MuiButtonBase-root.MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin.MuiPickersDay-today.css-jgls56-MuiButtonBase-root-MuiPickersDay-root{
+  background-color: #ff7f7f !important;
+}

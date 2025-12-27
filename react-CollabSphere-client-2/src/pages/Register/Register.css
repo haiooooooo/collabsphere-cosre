@@ -1,0 +1,16 @@
+.card{
+  
+    background-color: white;
+    border-radius: 20px;
+  }
+
+body {
+  background: #FAF9F6}
+/* Apply styles when the viewport width is 600 pixels or less */
+@media (max-width: 766px) {
+ .student_on_laptop{
+  height: 17em;
+ }
+
+
+}
