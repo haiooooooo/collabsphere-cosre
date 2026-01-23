@@ -1,0 +1,55 @@
+@startuml "Biểu đồ Use Case tổng quan - COSRE"
+left to right direction
+actor "Administrator" as Admin
+actor "Staff" as Staff
+actor "Head Department" as Head
+actor "Lecturer" as Lec
+actor "Student" as Stu
+
+rectangle "CollabSphere (COSRE)" {
+  usecase "Authentication" as UC_Auth
+  usecase "Subject & Syllabus Mgmt" as UC_Sub
+  usecase "Account Mgmt" as UC_Acc
+  usecase "Class Mgmt" as UC_Class
+  usecase "Project Mgmt" as UC_Project
+  usecase "Project Approval" as UC_Approve
+  usecase "Team & Workspace" as UC_Workspace
+  usecase "Resources" as UC_Res
+  usecase "Chat & Meetings" as UC_Comms
+  usecase "Evaluation & Peer Review" as UC_Eval
+  usecase "Notifications" as UC_Noti
+  usecase "AI Assistance" as UC_AI
+}
+
+Admin --> UC_Auth
+Admin --> UC_Acc
+Admin --> UC_Noti
+
+Staff --> UC_Auth
+Staff --> UC_Sub
+Staff --> UC_Acc
+Staff --> UC_Class
+
+Head --> UC_Auth
+Head --> UC_Approve
+Head --> UC_Project
+
+Lec --> UC_Auth
+Lec --> UC_Project
+Lec --> UC_Workspace
+Lec --> UC_Res
+Lec --> UC_Comms
+Lec --> UC_Eval
+Lec --> UC_AI
+
+Stu --> UC_Auth
+Stu --> UC_Workspace
+Stu --> UC_Res
+Stu --> UC_Comms
+Stu --> UC_Eval
+Stu --> UC_AI
+
+UC_Project --> UC_Approve : <<include>>
+UC_Workspace --> UC_Noti : <<include>>
+UC_Eval --> UC_Noti : <<include>>
+@enduml

@@ -760,7 +760,42 @@ const StudentWorkspace = () => {
     </div>
   );
 };
+const MainLayout = ({
+  user,
+  onLogout,
+}: {
+  user: User;
+  onLogout: () => void;
+}) => {
+  const renderDashboard = () => {
+    switch (user.role) {
+      case "ADMIN":
+        return <AdminDashboard />;
+      case "LECTURER":
+        return <LecturerDashboard />;
+      case "STUDENT":
+        return <StudentWorkspace />;
+      default:
+        return <div className="p-6">Unknown role</div>;
+    }
+  };
 
+  return (
+    <div className="min-h-screen bg-slate-100">
+      <div className="bg-white border-b px-6 py-3 flex justify-between">
+        <div className="font-bold">COSRE – CollabSphere</div>
+        <button
+          onClick={onLogout}
+          className="text-red-500 hover:underline"
+        >
+          Đăng xuất
+        </button>
+      </div>
+
+      <div className="p-6">{renderDashboard()}</div>
+    </div>
+  );
+};
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const handleLogin = (role: Role) => {

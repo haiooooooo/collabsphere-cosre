@@ -1,0 +1,28 @@
+@startuml "Use Case - Staff"
+left to right direction
+actor "Staff" as Staff
+
+rectangle System {
+  usecase "Log in" as UC1
+  usecase "Import Subjects/Syllabus" as UC2
+  usecase "Manage Subjects/Syllabus" as UC3
+  usecase "Import Accounts" as UC4
+  usecase "Manage Accounts" as UC5
+  usecase "Import Classes" as UC6
+  usecase "Manage Classes" as UC7
+  usecase "Assign Lecturer/Students to Class" as UC8
+}
+
+Staff --> UC1
+Staff --> UC2
+Staff --> UC3
+Staff --> UC4
+Staff --> UC5
+Staff --> UC6
+Staff --> UC7
+Staff --> UC8
+
+UC2 --> UC3 : <<include>>
+UC4 --> UC5 : <<include>>
+UC6 --> UC7 : <<include>>
+@enduml

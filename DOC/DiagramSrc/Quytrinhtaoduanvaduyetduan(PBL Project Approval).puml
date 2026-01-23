@@ -1,0 +1,28 @@
+@startuml "Quy trình duyệt Project"
+|Lecturer|
+start
+:Tạo project (desc, objectives, milestones);
+if (Dùng AI tạo milestones?) then (Yes)
+  :Yêu cầu AI gợi ý milestones;
+endif
+:Submit project để duyệt;
+
+|System|
+:Đặt trạng thái = Pending;
+:Gửi thông báo cho Head Department;
+
+|Head Department|
+:Xem danh sách pending;
+if (Duyệt?) then (Approve)
+  :Approve project;
+  |System|
+  :Cập nhật trạng thái = Approved;
+  :Cho phép assign project;
+else (Deny)
+  :Deny project;
+  |System|
+  :Cập nhật trạng thái = Denied;
+  :Gửi phản hồi cho Lecturer;
+endif
+stop
+@enduml

@@ -1,0 +1,51 @@
+@startuml "DFD - COSRE"
+skinparam linetype ortho
+
+actor Staff
+actor Head
+actor Lecturer
+actor Student
+
+rectangle "1.0 Subject/Syllabus Mgmt" as SSM
+rectangle "2.0 Class Mgmt" as CM
+rectangle "3.0 Project Mgmt" as PM
+rectangle "4.0 Team/Workspace" as TW
+rectangle "5.0 Communication" as COM
+rectangle "6.0 Evaluation" as EVA
+rectangle "7.0 Notification" as NOTI
+
+database "D1 Users" as D1
+database "D2 Subjects/Syllabus" as D2
+database "D3 Classes" as D3
+database "D4 Projects/Milestones" as D4
+database "D5 Teams/Tasks/Checkpoints" as D5
+database "D6 Messages/Meetings" as D6
+database "D7 Evaluations/PeerReviews" as D7
+
+Staff --> SSM
+SSM --> D2
+Staff --> CM
+CM --> D3
+CM --> D1
+
+Lecturer --> PM
+PM --> D4
+Head --> PM
+PM --> D4
+
+Student --> TW
+Lecturer --> TW
+TW --> D5
+
+Student --> COM
+Lecturer --> COM
+COM --> D6
+
+Student --> EVA
+Lecturer --> EVA
+EVA --> D7
+
+NOTI --> D1
+NOTI --> D5
+NOTI --> D7
+@enduml

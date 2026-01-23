@@ -1,0 +1,48 @@
+@startuml "BIỂU ĐỒ TÁC NHÂN - COSRE"
+left to right direction
+
+actor "Admin" as Admin
+actor "Head Department" as Head
+actor "Staff" as Staff
+actor "Lecturer" as Lec
+actor "Student" as Stu
+
+rectangle "CollabSphere (COSRE)" {
+  (Subject & Syllabus Management) as UC1
+  (Account & Class Management) as UC2
+  (Project Management) as UC3
+  (Teams & Workspace Management) as UC4
+  (Communication Management) as UC5
+  (Resources Management) as UC6
+  (Realtime Collaboration Tools) as UC7
+  (Evaluation & Feedback System) as UC8
+  (AI-powered Assistance) as UC9
+  (Notification System) as UC10
+}
+
+Admin --> UC2
+Admin --> UC10
+
+Staff --> UC1
+Staff --> UC2
+
+Head --> UC3
+Head --> UC2
+
+Lec --> UC3
+Lec --> UC4
+Lec --> UC5
+Lec --> UC6
+Lec --> UC7
+Lec --> UC8
+Lec --> UC9
+Lec --> UC10
+
+Stu --> UC4
+Stu --> UC5
+Stu --> UC6
+Stu --> UC7
+Stu --> UC8
+Stu --> UC9
+Stu --> UC10
+@enduml

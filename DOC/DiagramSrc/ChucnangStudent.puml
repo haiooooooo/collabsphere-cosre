@@ -1,0 +1,40 @@
+@startuml "Use Case - Student"
+left to right direction
+actor "Student" as Stu
+actor "Team Leader" as Lead
+
+rectangle System {
+  usecase "Log in" as UC1
+  usecase "View Class/Syllabus/Project" as UC2
+  usecase "Join Team Workspace" as UC3
+  usecase "Manage Tasks" as UC4
+  usecase "Answer Milestone Questions" as UC5
+  usecase "Submit Checkpoints" as UC6
+  usecase "Chat & Meetings" as UC7
+  usecase "Resources Management" as UC8
+  usecase "Peer Review" as UC9
+  usecase "View Feedback" as UC10
+
+  usecase "Manage Team Members" as UC11
+  usecase "Mark Milestones Done" as UC12
+  usecase "Assign Checkpoints" as UC13
+}
+
+Stu --> UC1
+Stu --> UC2
+Stu --> UC3
+Stu --> UC4
+Stu --> UC5
+Stu --> UC6
+Stu --> UC7
+Stu --> UC8
+Stu --> UC9
+Stu --> UC10
+
+Lead --> UC11
+Lead --> UC12
+Lead --> UC13
+
+UC3 --> UC4 : <<include>>
+UC6 --> UC8 : <<extend>>
+@enduml

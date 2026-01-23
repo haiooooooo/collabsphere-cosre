@@ -1,0 +1,15 @@
+@startuml "Sequence - Checkpoint Submission"
+autonumber
+participant "Team Member" as Mem
+participant "COSRE Web" as UI
+participant "COSRE API" as API
+database "DB" as DB
+participant Lecturer as Lec
+
+Mem -> UI: Upload submission
+UI -> API: POST /checkpoints/{id}/submissions
+API -> DB: INSERT submission + artifacts
+DB --> API: OK
+API --> UI: Submission saved
+API -> Lec: Notify (realtime/email)
+@enduml

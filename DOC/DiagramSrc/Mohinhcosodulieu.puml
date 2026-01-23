@@ -1,0 +1,161 @@
+@startuml "Mô hình CSDL - COSRE"
+hide circle
+skinparam classAttributeIconSize 0
+
+class User {
+  +id: uuid
+  +email: string
+  +full_name: string
+  +role: enum
+  +status: enum
+  +created_at: datetime
+}
+
+class Subject {
+  +id: uuid
+  +code: string
+  +name: string
+}
+
+class Syllabus {
+  +id: uuid
+  +subject_id: uuid
+  +version: string
+  +outcomes: text
+}
+
+class Class {
+  +id: uuid
+  +code: string
+  +subject_id: uuid
+  +semester: string
+}
+
+class Enrollment {
+  +class_id: uuid
+  +student_id: uuid
+}
+
+class Project {
+  +id: uuid
+  +subject_id: uuid
+  +title: string
+  +description: text
+  +status: enum
+  +created_by: uuid
+}
+
+class ProjectMilestone {
+  +id: uuid
+  +project_id: uuid
+  +title: string
+  +due_date: date
+  +order: int
+}
+
+class Team {
+  +id: uuid
+  +class_id: uuid
+  +project_id: uuid
+  +name: string
+  +leader_id: uuid
+}
+
+class TeamMember {
+  +team_id: uuid
+  +student_id: uuid
+  +role_in_team: enum
+}
+
+class Sprint {
+  +id: uuid
+  +team_id: uuid
+  +name: string
+  +start_date: date
+  +end_date: date
+}
+
+class Task {
+  +id: uuid
+  +sprint_id: uuid
+  +title: string
+  +status: enum
+  +assignee_id: uuid
+}
+
+class Checkpoint {
+  +id: uuid
+  +team_id: uuid
+  +title: string
+  +deadline: datetime
+}
+
+class CheckpointSubmission {
+  +id: uuid
+  +checkpoint_id: uuid
+  +submitted_by: uuid
+  +content: text
+  +submitted_at: datetime
+}
+
+class Resource {
+  +id: uuid
+  +owner_type: enum (Class/Team)
+  +owner_id: uuid
+  +name: string
+  +url: string
+}
+
+class Meeting {
+  +id: uuid
+  +team_id: uuid
+  +start_time: datetime
+  +type: enum
+}
+
+class Message {
+  +id: uuid
+  +team_id: uuid
+  +sender_id: uuid
+  +content: text
+  +created_at: datetime
+}
+
+class Evaluation {
+  +id: uuid
+  +team_id: uuid
+  +lecturer_id: uuid
+  +score: float
+  +comment: text
+}
+
+class PeerReview {
+  +id: uuid
+  +team_id: uuid
+  +from_student_id: uuid
+  +to_student_id: uuid
+  +score: float
+  +comment: text
+}
+
+User "1" -- "0..*" Project : created_by
+Subject "1" -- "0..*" Syllabus
+Subject "1" -- "0..*" Class
+Subject "1" -- "0..*" Project
+Project "1" -- "0..*" ProjectMilestone
+Class "1" -- "0..*" Enrollment
+User "1" -- "0..*" Enrollment : student_id
+
+Class "1" -- "0..*" Team
+Team "1" -- "0..*" TeamMember
+User "1" -- "0..*" TeamMember : student_id
+Team "1" -- "0..*" Sprint
+Sprint "1" -- "0..*" Task
+Team "1" -- "0..*" Checkpoint
+Checkpoint "1" -- "0..*" CheckpointSubmission
+Team "1" -- "0..*" Resource
+Team "1" -- "0..*" Meeting
+Team "1" -- "0..*" Message
+Team "1" -- "0..*" Evaluation
+Team "1" -- "0..*" PeerReview
+@enduml

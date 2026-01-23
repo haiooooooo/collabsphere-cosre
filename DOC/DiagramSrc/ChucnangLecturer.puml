@@ -1,0 +1,40 @@
+@startuml "Use Case - Lecturer"
+left to right direction
+actor "Lecturer" as Lec
+
+rectangle System {
+  usecase "Log in" as UC1
+  usecase "Create Project" as UC2
+  usecase "Generate Milestones (AI)" as UC3
+  usecase "Submit Project for Approval" as UC4
+  usecase "Assign Project to Class" as UC5
+  usecase "Create & Manage Teams" as UC6
+  usecase "Manage Milestones & Questions" as UC7
+  usecase "View Milestone Answers" as UC8
+  usecase "Manage Checkpoints" as UC9
+  usecase "View Checkpoint Submissions" as UC10
+  usecase "Workspace (Tasks/Sprints)" as UC11
+  usecase "Resources Management" as UC12
+  usecase "Chat & Meetings" as UC13
+  usecase "Evaluate & Feedback" as UC14
+  usecase "View Peer Reviews" as UC15
+}
+
+Lec --> UC1
+Lec --> UC2
+Lec --> UC4
+Lec --> UC5
+Lec --> UC6
+Lec --> UC7
+Lec --> UC8
+Lec --> UC9
+Lec --> UC10
+Lec --> UC11
+Lec --> UC12
+Lec --> UC13
+Lec --> UC14
+Lec --> UC15
+
+UC2 --> UC3 : <<extend>>
+UC2 --> UC4 : <<include>>
+@enduml

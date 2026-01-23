@@ -1,0 +1,20 @@
+@startuml "State - Project"
+state "Draft" as Draft
+state "PendingApproval" as Pending
+state "Approved" as Approved
+state "Denied" as Denied
+state "AssignedToClass" as Assigned
+state "InProgress" as InProgress
+state "Completed" as Completed
+state "Archived" as Archived
+
+[*] --> Draft
+Draft --> Pending : Submit
+Pending --> Approved : Approve
+Pending --> Denied : Deny
+Approved --> Assigned : Assign to class
+Assigned --> InProgress : Team starts
+InProgress --> Completed : Final submission
+Completed --> Archived : Archive
+Denied --> Draft : Revise & resubmit
+@enduml

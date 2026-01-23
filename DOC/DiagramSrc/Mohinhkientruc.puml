@@ -1,0 +1,27 @@
+@startuml "Kiến trúc COSRE - High Level"
+package "Client" {
+  [React Web App]
+}
+
+package "Backend" {
+  [FastAPI REST API]
+  [Realtime Gateway (Socket.IO)]
+  [Chat Service (Signal)]
+  [Meeting Service (WebRTC)]
+  [AI Integration (Bedrock)]
+}
+
+database "PostgreSQL" as DB
+queue "Redis (Upstash)" as Redis
+cloud "Cloudinary" as Media
+
+[React Web App] ..> [FastAPI REST API] : HTTPS/REST
+[React Web App] ..> [Realtime Gateway (Socket.IO)] : WS
+[React Web App] ..> [Chat Service (Signal)] : Realtime chat
+[React Web App] ..> [Meeting Service (WebRTC)] : WebRTC
+
+[FastAPI REST API] --> DB
+[FastAPI REST API] --> Redis
+[FastAPI REST API] --> Media
+[FastAPI REST API] --> [AI Integration (Bedrock)]
+@enduml

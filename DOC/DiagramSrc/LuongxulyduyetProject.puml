@@ -1,0 +1,32 @@
+@startuml "Sequence - Project Approval"
+autonumber
+participant Lecturer as Lec
+participant "COSRE Web" as UI
+participant "COSRE API" as API
+participant "Head Department" as Head
+database "DB" as DB
+
+Lec -> UI: Tạo project
+UI -> API: POST /projects (draft)
+API -> DB: INSERT Project(status=Draft)
+DB --> API: OK
+API --> UI: Project created
+
+Lec -> UI: Submit for approval
+UI -> API: POST /projects/{id}/submit
+API -> DB: UPDATE Project(status=Pending)
+DB --> API: OK
+API --> UI: Submitted
+
+Head -> UI: Review pending list
+UI -> API: GET /projects?status=Pending
+API -> DB: SELECT Pending Projects
+DB --> API: List
+API --> UI: Show list
+
+Head -> UI: Approve/Deny
+UI -> API: POST /projects/{id}/approve OR /deny
+API -> DB: UPDATE Project(status=Approved/Denied)
+DB --> API: OK
+API --> UI: Result + notification
+@enduml

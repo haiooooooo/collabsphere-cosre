@@ -1,0 +1,21 @@
+@startuml "Quy trình đánh giá & Peer Review"
+|Student|
+start
+:Thực hiện peer review cho các thành viên;
+:Submit peer review;
+
+|System|
+:Tổng hợp điểm/nhận xét peer review;
+:Thông báo Lecturer;
+
+|Lecturer|
+:Xem tổng hợp peer review;
+:Chấm điểm team;
+:Chấm điểm từng thành viên (rubric);
+:Feedback cuối kỳ;
+
+|System|
+:Publish kết quả;
+:Gửi thông báo cho team;
+stop
+@enduml

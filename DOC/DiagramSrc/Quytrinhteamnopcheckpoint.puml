@@ -1,0 +1,21 @@
+@startuml "Quy trình nộp Checkpoint"
+|Team Leader|
+start
+:Tạo checkpoint;
+:Assign members;
+:Đặt deadline;
+
+|Team Member|
+:Thực hiện task;
+:Upload/submit entry;
+
+|System|
+:Validate submission;
+:Lưu submission;
+:Gửi thông báo cho Lecturer & Team;
+
+|Lecturer|
+:Xem submission;
+:Feedback/đánh giá checkpoint;
+stop
+@enduml
