@@ -447,36 +447,10 @@ else (Deny)
 endif
 stop
 @enduml
-</details>
-
-2. Quy trình team nộp checkpoint
-<details> <summary>Code PlantUML</summary>
-plantuml
-Sao chép mã
-@startuml "Quy trình nộp Checkpoint"
-|Team Leader|
-start
-:Tạo checkpoint;
-:Assign members;
-:Đặt deadline;
-
-|Team Member|
-:Thực hiện task;
-:Upload/submit entry;
-
-|System|
-:Validate submission;
-:Lưu submission;
-:Gửi thông báo cho Lecturer & Team;
-
-|Lecturer|
-:Xem submission;
-:Feedback/đánh giá checkpoint;
-stop
-@enduml
 ~~~
 
 </details>
+
 
 
 ### 2. Quy trình team nộp checkpoint
