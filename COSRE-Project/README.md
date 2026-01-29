@@ -560,7 +560,7 @@ API --> UI: Result + notification
 </details>
 
 
-2. Luồng xử lý nộp Checkpoint
+### 2. Luồng xử lý nộp Checkpoint
 <details>
 <summary>Code PlantUML</summary>
 
