@@ -107,6 +107,7 @@ Lead --> UC11
 ~~~
 
 </details>
+<img width="2381" height="212" alt="image" src="https://github.com/user-attachments/assets/908d3274-4275-437b-bde7-134cf3c15c39" />
 
 
 ### 2. Các chức năng chính theo vai trò
@@ -243,6 +244,7 @@ UC_Eval --> UC_Noti : <<include>>
 ~~~
 
 </details>
+<img width="671" height="858" alt="image" src="https://github.com/user-attachments/assets/93c60ea4-a76c-47e5-82a6-9b0242f0d2b7" />
 
 
 ### 2. Biểu đồ Use Case chi tiết
@@ -311,6 +313,7 @@ UC4 --> UC6 : <<extend>>
 ~~~
 
 </details>
+<img width="1009" height="457" alt="image" src="https://github.com/user-attachments/assets/51780134-f562-4831-b58e-7fec3cafae5a" />
 
 
 #### 2.3. Chức năng Lecturer
@@ -361,6 +364,7 @@ UC2 --> UC4 : <<include>>
 ~~~
 
 </details>
+<img width="708" height="1105" alt="image" src="https://github.com/user-attachments/assets/5b0be095-7eb3-499b-94ee-5db4a7efb657" />
 
 
 #### 2.4. Chức năng Student
@@ -411,6 +415,7 @@ UC6 --> UC8 : <<extend>>
 ~~~
 
 </details>
+<img width="701" height="966" alt="image" src="https://github.com/user-attachments/assets/af8c8a0c-89fd-4940-8b66-dee3715d4b23" />
 
 
 ## IV. Quy trình hoạt động
@@ -450,6 +455,7 @@ stop
 ~~~
 
 </details>
+<img width="926" height="779" alt="image" src="https://github.com/user-attachments/assets/07b5f768-a987-4d19-9eda-15c32675d3b6" />
 
 
 
@@ -482,6 +488,7 @@ stop
 ~~~
 
 </details>
+<img width="720" height="664" alt="image" src="https://github.com/user-attachments/assets/6b649659-1ee8-4385-b990-1db68fc2ff79" />
 
 
 ### 3. Quy trình đánh giá cuối kỳ & peer review
@@ -514,6 +521,7 @@ stop
 
 
 </details>
+<img width="741" height="664" alt="image" src="https://github.com/user-attachments/assets/c15eb843-4a2c-49a8-b0a5-4ec3400b7899" />
 
 
 ## V. Luồng xử lý (Sequence)
@@ -522,7 +530,6 @@ stop
 <summary>Code PlantUML</summary>
 
 ~~~plantuml
-Sao chép mã
 @startuml "Sequence - Project Approval"
 autonumber
 participant Lecturer as Lec
@@ -558,6 +565,7 @@ API --> UI: Result + notification
 ~~~
 
 </details>
+<img width="765" height="774" alt="image" src="https://github.com/user-attachments/assets/f7d60331-440d-4b1e-8722-90c14406fedf" />
 
 
 ### 2. Luồng xử lý nộp Checkpoint
@@ -583,6 +591,7 @@ API -> Lec: Notify (realtime/email)
 ~~~
 
 </details>
+<img width="762" height="349" alt="image" src="https://github.com/user-attachments/assets/75b6c9cf-521a-4607-91a2-6f9d0c911293" />
 
 
 ## VI. Luồng dữ liệu (DFD)
@@ -644,6 +653,7 @@ NOTI --> D7
 ~~~
 
 </details>
+<img width="1340" height="304" alt="image" src="https://github.com/user-attachments/assets/1b63d618-3c9f-460e-8c07-74fcd8832726" />
 
 
 ## VII. Các trạng thái thực thể trong hệ thống
@@ -675,6 +685,7 @@ Denied --> Draft : Revise & resubmit
 ~~~
 
 </details>
+<img width="301" height="910" alt="image" src="https://github.com/user-attachments/assets/1ba33a2c-7c0f-4d9d-b61a-135c8f958fe5" />
 
 
 ## VIII. Công nghệ
@@ -746,6 +757,7 @@ cloud "Cloudinary" as Media
 ~~~
 
 </details>
+<img width="1331" height="371" alt="image" src="https://github.com/user-attachments/assets/508100c7-4c09-4e59-b0c4-d7adf4313929" />
 
 
 ### 2. Mô hình cơ sở dữ liệu (đề xuất)
@@ -917,6 +929,7 @@ Team "1" -- "0..*" PeerReview
 ~~~
 
 </details>
+<img width="1638" height="948" alt="image" src="https://github.com/user-attachments/assets/e7f6ab31-5182-4567-a27f-9ec1ec98a094" />
 
 
 ## X. Giao diện người dùng (đề xuất)
