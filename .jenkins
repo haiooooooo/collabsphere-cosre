@@ -1,0 +1,172 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE_NAME = 'sakshamgupta912/collabsphere-client'
+        SONARQUBE_SERVER = 'SonarQube'
+        SONARQUBE_PROJECT_KEY = 'CollabSphere-Client'
+        DOCKER_HUB_CREDENTIALS_ID = 'docker-hub-credentials'
+        AZURE_CREDENTIALS_ID= 'c2b432ce-81c9-44b2-9da6-bf316d588dec'
+        RESOURCE_GROUP = 'Flexi-DevOps'  // Replace with your Azure resource group
+        AKS_CLUSTER_NAME = 'collabsphere-client'  // Replace with your AKS cluster name
+    }               
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    git url: 'https://github.com/sakshamgupta912/react-CollabSphere-client', branch: 'v2' 
+                    // Dynamically set DOCKER_IMAGE_TAG based on the Git commit SHA
+                    env.DOCKER_IMAGE_TAG = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+                    echo "Docker Image Tag: ${env.DOCKER_IMAGE_TAG}"
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withCredentials([string(credentialsId: 'gene-token', variable: 'SONARQUBE_TOKEN')]) {
+                    withSonarQubeEnv(SONARQUBE_SERVER) {
+                        sh """
+                            /opt/sonar-scanner/bin/sonar-scanner \
+                                -Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} \
+                                -Dsonar.sources=. \
+                                -Dsonar.host.url=http://20.70.234.173:9000 \
+                                -Dsonar.login=${SONARQUBE_TOKEN} \
+                                -Dsonar.sourceEncoding=UTF-8 \
+                                -Dsonar.language=py,js
+                        """
+                    }
+                }
+            }
+        }
+
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    echo "Building Docker image ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}"
+                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG} ."
+                    sh "docker tag ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG} ${DOCKER_IMAGE_NAME}:latest"
+                }
+            }
+        }
+        stage('Run Image') {
+            steps {
+                script {
+                     env.CONTAINER_ID = sh(returnStdout: true, script: "docker run -d -p 80:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}").trim()
+                     echo "Started container with ID: ${env.CONTAINER_ID}"
+                }
+            }
+        }
+        stage('UI Testing') {
+            steps {
+                sh "pip install selenium webdriver-manager"
+                sh '''
+                Xvfb :99 -screen 0 1920x1080x24 &
+                export DISPLAY=:99
+                python3 selenium.test.py
+                '''
+            }
+        }
+        stage('Docker Stop') {
+            steps{
+                script {
+                         sh "docker stop ${env.CONTAINER_ID}"
+                         echo "Stopped container with ID: ${env.CONTAINER_ID}"
+                    }
+                }
+        }
+        stage('Docker Login') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                    }
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    echo "Pushing Docker image ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}"
+                    sh "docker push ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}"
+                    sh "docker push ${DOCKER_IMAGE_NAME}:latest"
+                }
+            }
+        }
+        
+        stage('Azure Login') {
+            steps {
+                withCredentials([azureServicePrincipal(AZURE_CREDENTIALS_ID)]) {
+                    script {
+                        sh '''
+                        az login --service-principal \
+                        -u $AZURE_CLIENT_ID \
+                        -p $AZURE_CLIENT_SECRET \
+                        --tenant $AZURE_TENANT_ID
+                        '''
+                    }
+                }
+            }
+        }
+        stage('Get AKS Credentials') {
+            steps {
+                script {
+                    // Get AKS credentials and set the context
+                    sh '''
+                    az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER_NAME --overwrite-existing
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy to AKS') {
+            steps {
+                script {
+                    echo "Deploying Docker image ${DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG} to AKS"
+                    
+                    // Replace the image tag placeholder in deployment.yaml with the actual Docker image tag
+                    sh """
+<<<<<<< HEAD
+                    sed -i 's|\\${DOCKER_IMAGE_TAG}|${DOCKER_IMAGE_TAG}|g' deployment.yaml
+=======
+                    kubectl set image deployment/collabsphere-client collabsphere-client=${DOCKER_IMAGE_NAME}:latest --record
+>>>>>>> f885ee219fc1b7810d397ec904ccbffabb7d8a7d
+                    """
+                    
+                    // Apply Kubernetes deployment and service YAML files with the updated image tag
+                    sh '''
+                    kubectl apply -f deployment.yaml
+                    kubectl apply -f service.yaml
+                    kubectl get services --namespace default
+                    '''
+                }
+            }
+        }
+
+     
+    }
+
+    post {
+        success {
+            echo "CollabSphere client pipeline ended successfully."
+        }
+        failure {
+            echo "Build failed."
+        }
+        always {
+            cleanWs() // Clean up workspace before and after every build
+            script {
+                echo "Cleaning up Docker resources..."
+                sh '''
+                    docker container prune -f
+                    docker image prune -a -f
+                    docker volume prune -f
+                    docker builder prune -f
+                '''
+            }
+        }
+    }
+}

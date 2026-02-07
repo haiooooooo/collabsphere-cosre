@@ -1,0 +1,61 @@
+/* Green theme overrides for ChatScope UI */
+.cs-message--outgoing .cs-message__content {
+    background-color: var(--cosre-primary) !important;
+}
+
+.cs-message__content {
+    background-color: var(--cosre-primary) !important;
+}
+
+.cs-conversation-header{
+    background-color: white !important;
+}
+
+.cs-conversation-header__content .cs-conversation-header__user-name{
+    background-color: white !important;
+}
+
+.cs-message--incoming .cs-message__content {
+    background-color: rgba(22, 163, 74, 0.75) !important;
+}
+
+.cs-message-input__content-editor-wrapper {
+    background-color: white !important;
+}
+
+.cs-chat-container .cs-message-input {
+    border-top: solid 1px black;
+    border-right: solid 0px black;
+    border-bottom: solid 0px black;
+    border-left: solid 0px black;
+    margin-top: auto;
+    padding: .3em 0 .3em 0em;
+    color: rgba(0,0,0,.87);
+    background-color: #fff;
+
+}
+
+.cs-message-input__content-editor-container{
+    background-color: rgba(22, 163, 74, 0.18) !important;
+}
+
+.cs-message-input__content-editor {
+ 
+    background-color: white;
+   
+}
+
+.cs-button--send {
+    color: var(--cosre-primary) !important;
+    background-color: transparent;
+}
+
+.cs-button--attachment {
+    color: var(--cosre-primary) !important;
+    background-color: transparent;
+}
+
+.cs-button--arrow {
+    color: var(--cosre-primary) !important;
+    background-color: transparent;
+}

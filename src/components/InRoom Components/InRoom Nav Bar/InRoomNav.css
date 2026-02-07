@@ -1,0 +1,17 @@
+.nav-link{
+  
+ 
+   min-width: 150px;
+   text-align: center;
+}
+
+.nav-link.active{
+  
+  background: #FF7F7F !important;
+  color: white !important;
+ }
+
+ .nav-link:hover{
+   color: #FF7F7F ;
+   background: #fbdede;
+ }

@@ -1,0 +1,82 @@
+:root {
+  --cosre-primary: #16a34a; /* green */
+  --cosre-primary-dark: #12803a;
+  --cosre-primary-soft: rgba(22, 163, 74, 0.12);
+  --cosre-border: rgba(2, 6, 23, 0.12);
+  --cosre-text: #0f172a;
+  --cosre-muted: rgba(15, 23, 42, 0.7);
+  --cosre-bg: #ffffff;
+  --cosre-bg-soft: #f6fff8;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--cosre-text);
+  background: var(--cosre-bg-soft);
+}
+
+/* Make "danger" utilities act as app primary (green) to quickly recolor existing UI */
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active {
+  background-color: var(--cosre-primary) !important;
+  border-color: var(--cosre-primary) !important;
+}
+
+.btn-danger:focus,
+.btn-danger:active {
+  box-shadow: 0 0 0 0.25rem rgba(22, 163, 74, 0.25) !important;
+}
+
+.btn-outline-danger,
+.btn-outline-danger:hover,
+.btn-outline-danger:focus,
+.btn-outline-danger:active {
+  color: var(--cosre-primary) !important;
+  border-color: var(--cosre-primary) !important;
+}
+
+.btn-outline-danger:hover {
+  background-color: var(--cosre-primary-soft) !important;
+}
+
+.bg-danger {
+  background-color: var(--cosre-primary) !important;
+}
+
+.text-danger {
+  color: var(--cosre-primary) !important;
+}
+
+/* Links */
+a {
+  color: var(--cosre-primary);
+}
+a:hover {
+  color: var(--cosre-primary-dark);
+}
+
+/* Cards */
+.card {
+  border-radius: 16px;
+}
+
+/* MDB navbar active link background consistency */
+.navbar .nav-link.active {
+  background: var(--cosre-primary) !important;
+  color: #fff !important;
+  border-radius: 12px;
+}
+
+.navbar .nav-link:hover {
+  color: var(--cosre-primary) !important;
+  background: var(--cosre-primary-soft) !important;
+  border-radius: 12px;
+}

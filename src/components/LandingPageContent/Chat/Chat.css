@@ -1,0 +1,26 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: sans-serif;
+  /* text-align: center; */
+}
+
+.str-chat__li--single {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+
+.str-chat-channel .str-chat__container .str-chat__main-panel, .str-chat-channel .str-chat__container .str-chat-angular__main-panel-inner
+{
+    height: 100% !important;
+}
+
+.str-chat {
+    height:calc(100vh - 50px) !important;
+}
